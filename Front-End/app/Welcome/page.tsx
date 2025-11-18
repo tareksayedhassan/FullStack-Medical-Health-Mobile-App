@@ -1,3 +1,4 @@
+import { useTranslate } from "@/localization/index";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -8,6 +9,7 @@ export const options = {
 
 export default function page() {
   const router = useRouter();
+  const t = useTranslate();
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#ffff" }}>
@@ -16,25 +18,36 @@ export default function page() {
           source={require("@/assets/images/care.png")}
           style={{ width: 200, height: 200 }}
         />
-        <Text style={{ fontSize: 35, color: "#3660ff" }}>Skin</Text>
-        <Text style={{ fontSize: 30, color: "#3660ff" }}>Firts</Text>
-        <Text style={{ fontSize: 15, color: "#3660ff" }}>
-          Dermatology center
+        <Text style={{ fontSize: 35, color: "#3660ff" }}>
+          {t("Your Health")}
         </Text>
+        <Text style={{ fontSize: 30, color: "#3660ff" }}>{t("Firts")}</Text>
+        <Text style={{ fontSize: 15, color: "#3660ff" }}>{t("CarePoint")}</Text>
         <View style={{ marginTop: 17, alignItems: "center" }}>
-          <Text>Lorem ipsum dolor sit amet, consectetur incididunt</Text>
-          <Text>adipiscing elit, sed do eiusmod tempor </Text>
-          <Text>ut labore et dolore magna aliqua. </Text>
+          <Text style={{ color: "#333" }}>
+            {t("Get the medical care you need, when you need it.")}
+          </Text>
+          <Text style={{ fontSize: 16, color: "#333" }}>
+            {t("Find trusted doctors across multiple specialties.")}
+          </Text>
+          <Text style={{ fontSize: 16, color: "#333" }}>
+            {t("Book your appointment quickly and easily.")}
+          </Text>
         </View>
         <View style={{ flex: 1, gap: 10, marginTop: 15 }}>
           <TouchableOpacity
             style={styles.Button}
             onPress={() => router.push("/login/page")}
           >
-            <Text style={{ fontSize: 17, color: "#ffff" }}>Log in</Text>
+            <Text style={{ fontSize: 17, color: "#ffff" }}>{t("Log in")}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.Button}>
-            <Text style={{ fontSize: 17, color: "#ffff" }}>Sign Up</Text>
+            <Text
+              style={{ fontSize: 17, color: "#ffff" }}
+              onPress={() => router.push("/register/page")}
+            >
+              {t("Sign up")}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
